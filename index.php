@@ -1,6 +1,8 @@
 <?php
+require_once __DIR__ . '/vendor/autoload.php';
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 try{
-    $dns = "mysql:host=gateway01.eu-central-1.prod.aws.tidbcloud.com;port=4000;dbname=ogur-pok-dex";
+    $dns = "mysql:host={$_ENV['DB_HOST']};port={$_ENV['DB_PORT]};dbname={$_ENV['DB_NAME']}";
     
     $options = [
     PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => false,
